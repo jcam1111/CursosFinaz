@@ -1,6 +1,6 @@
-using SchoolManagement.Infrastructure.Data;
-using SchoolManagement.Infrastructure.Repositories;
-using SchoolManagement.Application.Interfaces;
+//using SchoolManagement.Infrastructure.Data;
+//using SchoolManagement.Infrastructure.Repositories;
+//using SchoolManagement.Application.Interfaces;
 using SchoolManagement.Application.Services;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementMVC.SchoolManagement.Infrastructure.Data;

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Core.Entities;
-using SchoolManagement.Domain.Entities;
-using SchoolManagement.Domain.Interfaces;
-using SchoolManagement.Infrastructure.Data;
+//using SchoolManagement.Domain.Entities;
+//using SchoolManagement.Domain.Interfaces;
+//using SchoolManagement.Infrastructure.Data;
 using SchoolManagementMVC.SchoolManagement.Application.Interfaces;
 using SchoolManagementMVC.SchoolManagement.Infrastructure.Data;
 using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories
         public async Task<Grade> GetByIdAsync(int id)
         {
             return await _context.Grades
-                                 .FirstOrDefaultAsync(g => g.Id == id);
+                                 .FirstOrDefaultAsync(g => g.GradeID == id);
         }
 
         // Agregar una nueva calificación
@@ -47,7 +47,7 @@ namespace SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories
             _context.Grades.Update(grade);
             await _context.SaveChangesAsync();
         }
-
+        
         // Eliminar una calificación
         public async Task DeleteAsync(Grade grade)
         {
@@ -59,7 +59,7 @@ namespace SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories
         public async Task<IEnumerable<Grade>> GetGradesByStudentIdAsync(int studentId)
         {
             return await _context.Grades
-                                 .Where(g => g.StudentId == studentId)
+                                 .Where(g => g.StudentID == studentId)
                                  .ToListAsync();
         }
 
@@ -67,7 +67,7 @@ namespace SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories
         public async Task<IEnumerable<Grade>> GetGradesByCourseIdAsync(int courseId)
         {
             return await _context.Grades
-                                 .Where(g => g.CourseId == courseId)
+                                 .Where(g => g.CourseID == courseId)
                                  .ToListAsync();
         }
     }

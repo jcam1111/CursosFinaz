@@ -1,0 +1,22 @@
+﻿@model SchoolManagementMVC.SchoolManagement.Web.Models.TeacherViewModel
+
+@{
+    ViewData["Title"] = "Delete Teacher";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="alert alert-warning">
+    <h4>Are you sure you want to delete this teacher?</h4>
+    <p>
+        Name: @Model.FirstName @Model.LastName <br />
+        Email: @Model.Email <br />
+        Department: @Model.Department
+    </p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>

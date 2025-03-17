@@ -9,13 +9,7 @@ namespace SchoolManagement.Core.Entities
 {
     public class Teacher
     {
-        public Teacher(string firstName, string lastName, string email/*, string department*/)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            //Department = department;
-        }
+     
         public int TeacherID { get; set; }
 
         [Required]
@@ -35,6 +29,14 @@ namespace SchoolManagement.Core.Entities
         public DateTime ModifiedAt { get; set; }
         // Propiedad de navegación para la relación muchos a muchos con los cursos
         public required ICollection<Course> Courses { get; set; } // Relación de muchos a muchos
+        public Teacher(string firstName, string lastName, string email)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Courses = new List<Course>(); // Inicialización de la colección
+
+        }
     }
 
 }

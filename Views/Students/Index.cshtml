@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SchoolManagementMVC.SchoolManagement.Web.Models.StudentViewModel>
+
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Student</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Email</td>
+                <td>@student.DateOfBirth.ToShortDateString()</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = student.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = student.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

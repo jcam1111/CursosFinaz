@@ -38,7 +38,7 @@ namespace SchoolManagementMVC.SchoolManagement.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _teacherService.CreateTeacherAsync(createTeacherDto); // Llamamos al servicio para agregar el profesor
+                await _teacherService.CreateTeacherAsync(createTeacherDto, new(createTeacherDto.FirstName, createTeacherDto.LastName, createTeacherDto.Email)); // Llamamos al servicio para agregar el profesor
                 return RedirectToAction(nameof(Index)); // Redirige al listado de profesores
             }
 

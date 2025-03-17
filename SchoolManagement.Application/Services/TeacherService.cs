@@ -6,6 +6,7 @@ using SchoolManagement.Core.Entities;
 using SchoolManagementMVC.SchoolManagement.Application.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace SchoolManagementMVC.SchoolManagement.Application.Services
 {
@@ -44,20 +45,19 @@ namespace SchoolManagementMVC.SchoolManagement.Application.Services
             };
         }
 
-        public async Task AddTeacherAsync(CreateTeacherDTO createTeacherDto)
+        public async Task CreateTeacherAsync(CreateTeacherDTO createTeacherDto, Teacher teacher)
         {
-            var teacher = new Teacher
-            {
-                FirstName = createTeacherDto.FirstName,
-                LastName = createTeacherDto.LastName,
-                Email = createTeacherDto.Email
-                //Department = createTeacherDto.Department
-            };
+            //{
+            //    FirstName = ,
+            //    LastName = ,
+            //    Email = 
+            //    //Department = createTeacherDto.Department
+            //};
 
             await _teacherRepository.AddAsync(teacher);
         }
 
-        public async Task UpdateTeacherAsync(UpdateTeacherDTO updateTeacherDto)
+        public async Task UpdateTeacherAsync(int id, UpdateTeacherDTO updateTeacherDto)
         {
             var teacher = await _teacherRepository.GetByIdAsync(updateTeacherDto.Id);
             if (teacher == null) return;
@@ -81,13 +81,27 @@ namespace SchoolManagementMVC.SchoolManagement.Application.Services
         // Implementación del método GetCoursesByTeacherAsync
         public async Task<IEnumerable<CreateCourseDTO>> GetCoursesByTeacherAsync(int teacherId)
         {
-            var courses = await _courseRepository.GetCoursesByTeacherIdAsync(teacherId);
-            return courses.Select(c => new CreateCourseDTO
-            {
-                TeacherID = c.Id,
-                Name = c.Name,
-                Description = c.Description
-            });
+            //var courses = await _courseRepository.GetCoursesByTeacherIdAsync(teacherId);
+            //var courses = await _courseRepository.GetByIdAsync(teacherId).ToString();
+            var courses = await _courseRepository.GetAllAsync();
+            //if (courses == null || !courses.Any())
+            //{
+            //    // Si no se encuentran cursos para este teacherId, devolver una lista vacía
+            //    return Enumerable.Empty<CreateCourseDTO>();
+            //}
+
+            //return courses.Select(c => new CreateCourseDTO
+            //{
+            //    TeacherID = c.Id,
+            //    Name = c.Name,
+            //    Description = c.Description
+            //});
+            return (IEnumerable<CreateCourseDTO>)courses;
+            //{
+            //    TeacherID = c.TeacherId,  // Asumiendo que los cursos tienen una propiedad TeacherId
+            //    Name = c.Name,
+            //    Description = c.Description
+            //});
         }
     }
 }

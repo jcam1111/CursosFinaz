@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.DTOs;
-using SchoolManagement.Application.Interfaces;
+//using SchoolManagement.Application.Interfaces;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Mvc;
 using SchoolManagementMVC.SchoolManagement.Application.Services;
 
 namespace SchoolManagementMVC.SchoolManagement.Web.Controllers

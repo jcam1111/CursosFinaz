@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
-using SchoolManagement.Application.Interfaces;
-using SchoolManagement.Infrastructure.Repositories;
-using SchoolManagement.Infrastructure.Services;
+//using SchoolManagement.Application.Interfaces;
+//using SchoolManagement.Infrastructure.Repositories;
+//using SchoolManagement.Infrastructure.Services;
 using SchoolManagementMVC.SchoolManagement.Application.Interfaces;
 using SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories;
 
