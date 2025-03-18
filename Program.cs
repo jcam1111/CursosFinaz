@@ -5,7 +5,16 @@ using SchoolManagement.Application.Services;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementMVC.SchoolManagement.Infrastructure.Data;
 
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using SchoolManagementMVC.SchoolManagement.Application.Services;
+using SchoolManagementMVC.SchoolManagement.Application.Interfaces;
+using SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 // Configurar el contexto de datos (DbContext)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -14,6 +23,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 var app = builder.Build();
 

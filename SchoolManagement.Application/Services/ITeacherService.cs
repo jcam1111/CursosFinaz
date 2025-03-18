@@ -10,7 +10,8 @@ namespace SchoolManagementMVC.SchoolManagement.Application.Services
     {
         Task<IEnumerable<CreateTeacherDTO>> GetAllTeachersAsync();
         Task<CreateTeacherDTO> GetTeacherByIdAsync(int id);
-        Task CreateTeacherAsync(CreateTeacherDTO teacherDTO);
+        //Task CreateTeacherAsync(CreateTeacherDTO teacherDTO);
+        Task CreateTeacherAsync(CreateTeacherDTO teacherDTO, Teacher teacher);        
         Task UpdateTeacherAsync(int id, UpdateTeacherDTO teacherDTO);
         Task DeleteTeacherAsync(int id);
 

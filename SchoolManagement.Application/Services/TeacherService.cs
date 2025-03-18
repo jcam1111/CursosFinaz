@@ -47,6 +47,8 @@ namespace SchoolManagementMVC.SchoolManagement.Application.Services
 
         public async Task CreateTeacherAsync(CreateTeacherDTO createTeacherDto, Teacher teacher)
         {
+
+            //Teacher teacher = new(createTeacherDto.FirstName, createTeacherDto.LastName, createTeacherDto.Email);
             //{
             //    FirstName = ,
             //    LastName = ,

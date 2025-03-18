@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.DTOs;
+using SchoolManagement.Core.Entities;
+
 //using SchoolManagement.Application.Interfaces;
 using SchoolManagementMVC.SchoolManagement.Application.Services;
 using System.Threading.Tasks;
@@ -38,8 +40,8 @@ namespace SchoolManagementMVC.SchoolManagement.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _teacherService.CreateTeacherAsync(createTeacherDto, new(createTeacherDto.FirstName, createTeacherDto.LastName, createTeacherDto.Email)); // Llamamos al servicio para agregar el profesor
-                return RedirectToAction(nameof(Index)); // Redirige al listado de profesores
+                //await _teacherService.CreateTeacherAsync(createTeacherDto, new Teacher(createTeacherDto.FirstName, createTeacherDto.LastName, createTeacherDto.Email)); // Llamamos al servicio para agregar el profesor
+                //return RedirectToAction(nameof(Index)); // Redirige al listado de profesores
             }
 
             return View(createTeacherDto); // Si el modelo no es válido, retorna el formulario

@@ -14,9 +14,9 @@ namespace SchoolManagement.Application.Services
     {
         Task<IEnumerable<Student>> GetAllStudentsAsync();
         Task<Student> GetStudentByIdAsync(int id);
-        Task CreateStudentAsync(CreateStudentDTO studentDTO);
-        Task UpdateStudentAsync(int id, UpdateStudentDTO studentDTO);
-        Task DeleteStudentAsync(int id);
+        Task<bool> CreateStudentAsync(CreateStudentDTO studentDTO);
+        Task<bool> UpdateStudentAsync(int id, UpdateStudentDTO studentDTO);
+        Task<bool> DeleteStudentAsync(int id);
     }
 
 }

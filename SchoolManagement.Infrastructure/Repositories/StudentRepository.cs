@@ -16,7 +16,8 @@ namespace SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories
     //}
     public class StudentRepository : BaseRepository<Student>, IStudentRepository
     {
-        public StudentRepository(DbContext context) : base(context)
+        public StudentRepository(ApplicationDbContext context) : base(context)
+//public StudentRepository(DbContext context) : base((ApplicationDbContext)context)
         {
         }
 
@@ -29,14 +30,36 @@ namespace SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories
                                  .ToListAsync();
         }
 
-        Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            var student = await _context.Students.FindAsync(id);
+            if (student != null)
+            {
+                _context.Students.Remove(student);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        Task<IEnumerable<Student>> GetAllAsync(StudentFilterDTO filter)
+        public async Task<IEnumerable<Student>> GetAllAsync(StudentFilterDTO filter)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            var query = _context.Students.AsQueryable();
+
+            // Aplicar filtros si existen
+            if (!string.IsNullOrEmpty(filter.FirstName))
+            {
+                query = query.Where(s => s.FirstName.Contains(filter.FirstName));
+            }
+
+            if (!string.IsNullOrEmpty(filter.LastName))
+            {
+                query = query.Where(s => s.LastName.Contains(filter.LastName));
+            }
+
+            // Puedes agregar más filtros según sea necesario
+
+            return await query.ToListAsync();
         }
     }
 }

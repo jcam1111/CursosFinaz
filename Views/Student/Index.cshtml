@@ -1,4 +1,6 @@
-﻿@model IEnumerable<SchoolManagementMVC.SchoolManagement.Web.Models.StudentViewModel>
+﻿@* @model IEnumerable<SchoolManagementMVC.SchoolManagement.Web.Models.Student> *@
+@model IEnumerable<SchoolManagement.Core.Entities.Student>
+
 
 @{
     ViewData["Title"] = "Students List";
@@ -16,7 +18,7 @@
             <th>@Html.DisplayNameFor(model => model.FirstName)</th>
             <th>@Html.DisplayNameFor(model => model.LastName)</th>
             <th>@Html.DisplayNameFor(model => model.Email)</th>
-            <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+            <th>@Html.DisplayNameFor(model => model.BirthDate)</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -27,10 +29,10 @@
                 <td>@student.FirstName</td>
                 <td>@student.LastName</td>
                 <td>@student.Email</td>
-                <td>@student.DateOfBirth.ToShortDateString()</td>
+                <td>@student.BirthDate.ToShortDateString()</td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = student.Id })" class="btn btn-warning">Edit</a>
-                    <a href="@Url.Action("Delete", new { id = student.Id })" class="btn btn-danger">Delete</a>
+                    <a href="@Url.Action("Edit", new { id = student.StudentID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = student.StudentID })" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

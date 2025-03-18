@@ -49,10 +49,16 @@ namespace SchoolManagementMVC.SchoolManagement.Infrastructure.Repositories
         }
         
         // Eliminar una calificación
-        public async Task DeleteAsync(Grade grade)
+        //public async Task DeleteAsync(Grade grade)
+        public async Task DeleteAsync(int id)
         {
-            _context.Grades.Remove(grade);
-            await _context.SaveChangesAsync();
+           var grade= await _context.Grades
+                                 .FirstOrDefaultAsync(g => g.GradeID == id);
+            if(grade!= null)
+            {
+                _context.Grades.Remove(grade);
+                await _context.SaveChangesAsync();
+            }
         }
 
         // Obtener las calificaciones de un estudiante por su ID
